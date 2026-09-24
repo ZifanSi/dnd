@@ -1,0 +1,40 @@
+export default {
+  id: "silverymoon",
+  name: "Silverymoon",
+  region: "Silver Marches",
+  sources: [
+    { id: "sm", title: "Silver Marches", pages: "48-71", publisher: "Wizards of the Coast", year: 2002 },
+    { id: "north", title: "The North: Guide to the Savage Frontier — Cities & Civilization", pages: "43-48", publisher: "TSR", year: 1996 }
+  ],
+  establishments: [
+    { id: "golden-oak", name: "The Golden Oak", type: "inn", district: "Northbank", description: "Inn operated by Izolda Three-corn, a priestess of Shiallia.", sourceIds: ["sm"] },
+    { id: "wayward-house", name: "Wayward House", type: "inn", district: "Northbank", aliases: ["Inn of the Wayward Sages"], sourceIds: ["sm"] },
+    { id: "inn-downstream-run", name: "Inn of the Downstream Run", type: "inn", district: "Southbank", sourceIds: ["sm"] },
+    { id: "dancing-goat", name: "The Dancing Goat", type: "tavern", district: "Northbank", description: "A ribald local tavern.", sourceIds: ["sm"] },
+    { id: "helmers-wall", name: "Helmer's Wall", type: "tavern", district: "Northbank", description: "A former gate in the old city wall converted into a student-favored tavern.", sourceIds: ["sm"] },
+    { id: "sorlars-smiling-satyr", name: "Sorlar's Smiling Satyr", type: "tavern", district: "Southbank", sourceIds: ["sm"] },
+    { id: "vilriels", name: "Vilriel's Shop of Useful Items", type: "general-store", description: "Named shop for practical goods.", sourceIds: ["sm"] },
+    { id: "broadhands-forge", name: "Broadhand's Forge and Tack", type: "blacksmith", description: "Forge and tack shop serving travelers and residents.", sourceIds: ["sm"] },
+    { id: "house-invincible", name: "The House Invincible", type: "temple", district: "Northbank", deity: "Helm", sourceIds: ["sm"] },
+    { id: "halls-inspiration", name: "The Halls of Inspiration", type: "temple", district: "Northbank", deities: ["Milil", "Oghma"], sourceIds: ["sm"] },
+    { id: "temple-silver-stars", name: "The Temple of Silver Stars", type: "temple", district: "Northbank", deity: "Selûne", sourceIds: ["sm"] },
+    { id: "fortune-hall", name: "Fortune Hall", type: "temple", district: "Northbank", deity: "Tymora", sourceIds: ["sm"] },
+    { id: "tower-balance", name: "The Tower of Balance", type: "temple", district: "Northbank", deity: "Mystra", sourceIds: ["sm"] },
+    { id: "rhyesters-matins", name: "Rhyester's Matins", type: "temple", district: "Northbank", deity: "Lathander", sourceIds: ["sm"] },
+    { id: "silverglen", name: "Silverglen", type: "temple", district: "Northbank", deity: "Silvanus", description: "Sacred grove serving as Silvanus's temple.", sourceIds: ["sm"] },
+    { id: "high-palace", name: "High Palace", type: "palace", district: "Northbank", description: "Residence and seat of the High Mage, protected by soldiers and spellcasters.", sourceIds: ["sm", "north"] },
+    { id: "harper-hall", name: "Harper Hall", type: "guildhall", factions: ["Harpers"], sourceIds: ["sm"] },
+    { id: "vault-sages", name: "Vault of the Sages", type: "library", district: "Southbank", description: "Silverymoon's foremost library and a center of magical scholarship.", sourceIds: ["sm"] },
+    { id: "silver-ladys-library", name: "Silver Lady's Library", type: "library", sourceIds: ["sm"] },
+    { id: "ladys-college", name: "The Lady's College", type: "school", district: "Southbank", description: "Prestigious school of magic within the Conclave of Silverymoon.", sourceIds: ["sm"] },
+    { id: "miresks-school", name: "Miresk's School of Thaumaturgy", type: "school", district: "Southbank", sourceIds: ["sm"] },
+    { id: "utrumms-conservatory", name: "Utrumm's Music Conservatory", type: "school", district: "Southbank", sourceIds: ["sm"] },
+    { id: "sarandrars-stage", name: "Sarandrar's Small Stage", type: "theater", sourceIds: ["sm"] },
+    { id: "western-garrison", name: "Western Garrison Barracks", type: "barracks", district: "Southbank", sourceIds: ["sm"] },
+    { id: "moorgate", name: "The Moorgate", type: "gatehouse", district: "Northbank", sourceIds: ["sm"] },
+    { id: "hunters-gate", name: "Hunter's Gate", type: "gatehouse", district: "Northbank", description: "Northernmost gate into the city.", sourceIds: ["sm"] },
+    { id: "sundabar-gate", name: "Sundabar Gate", type: "gatehouse", district: "Northbank", sourceIds: ["sm"] },
+    { id: "blacklar-gate", name: "Blacklar Gate", type: "gatehouse", district: "Southbank", sourceIds: ["sm"] },
+    { id: "mulgate", name: "Mulgate", type: "gatehouse", district: "Southbank", sourceIds: ["sm"] }
+  ]
+};
