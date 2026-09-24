@@ -1,0 +1,43 @@
+export default {
+  id: "baldur's-gate",
+  name: "Baldur's Gate",
+  region: "Sword Coast",
+  era: "Primarily 1482-1492 DR, matching Murder in Baldur's Gate and Baldur's Gate: Descent into Avernus.",
+  sources: [
+    { id: "bgdia", title: "Baldur's Gate: Descent into Avernus", pages: "172-202", publisher: "Wizards of the Coast", year: 2019 },
+    { id: "mibg", title: "Murder in Baldur's Gate", pages: "10-28", publisher: "Wizards of the Coast", year: 2013 },
+    { id: "vgsc", title: "Volo's Guide to the Sword Coast", pages: "12-33", publisher: "TSR", year: 1994 }
+  ],
+  establishments: [
+    { id: "three-old-kegs", name: "Three Old Kegs", type: "inn", district: "Upper City, Temples District", description: "Renowned inn favored by retired Flaming Fist veterans.", sourceIds: ["bgdia", "vgsc"] },
+    { id: "helm-cloak", name: "Helm and Cloak", type: "inn", district: "Upper City, Temples District", description: "Upscale traditional inn in the heart of the Upper City.", sourceIds: ["bgdia", "vgsc"] },
+    { id: "blade-stars", name: "Blade and Stars", type: "inn", district: "Lower City, Eastway", description: "Quiet inn known for high-quality food.", sourceIds: ["mibg", "vgsc"] },
+    { id: "elfsong", name: "Elfsong Tavern", type: "tavern", district: "Lower City, Eastway", description: "Famous tavern haunted by the song of an unseen elven voice.", sourceIds: ["bgdia", "mibg"] },
+    { id: "low-lantern", name: "Low Lantern", type: "tavern", district: "Lower City, Eastway", description: "Tavern and festhall housed in a permanently moored ship.", sourceIds: ["mibg"] },
+    { id: "blushing-mermaid", name: "Blushing Mermaid", type: "tavern", district: "Lower City", description: "Raucous dockside tavern with a long-standing reputation for violence.", sourceIds: ["vgsc"] },
+    { id: "well-adjusted-als", name: "Well-Adjusted Al's General Store", type: "general-store", district: "Outer City", sourceIds: ["bgdia"] },
+    { id: "rivington-general", name: "Rivington General", type: "general-store", district: "Outer City, Rivington", sourceIds: ["bgdia"] },
+    { id: "danthelons-dancing-axe", name: "Danthelon's Dancing Axe", type: "blacksmith", district: "Outer City, Wyrm's Crossing", description: "Weapons and armor shop run by Danthelon.", sourceIds: ["bgdia"] },
+    { id: "high-house-wonders", name: "High House of Wonders", type: "temple", district: "Upper City, Temples District", deity: "Gond", description: "Vast temple-workshop of Gond.", sourceIds: ["bgdia", "mibg"] },
+    { id: "water-queens-house", name: "Water Queen's House", type: "temple", district: "Lower City docks", deity: "Umberlee", description: "The city's oldest house of worship.", sourceIds: ["mibg", "vgsc"] },
+    { id: "lady-hall", name: "Lady's Hall", type: "temple", district: "Upper City", deity: "Tymora", sourceIds: ["vgsc"] },
+    { id: "harborside-hospital", name: "Harborside Hospital", type: "healer", district: "Outer City, Tumbledown", description: "Hospital serving the city's poor and sick.", sourceIds: ["bgdia"] },
+    { id: "watch-citadel", name: "Watch Citadel", type: "guardhouse", district: "Upper City", factions: ["Watch"], description: "Headquarters, barracks, and training facility of the Upper City's Watch.", sourceIds: ["mibg", "bgdia"] },
+    { id: "seatower", name: "Seatower of Balduran", type: "prison", district: "Lower City, Seatower", factions: ["Flaming Fist"], description: "Fortress headquarters whose dungeons serve as the city's principal prison.", sourceIds: ["mibg", "bgdia"] },
+    { id: "high-hall-town", name: "High Hall", type: "town-hall", district: "Upper City, Temples District", description: "Seat of the Council of Four, city courts, civic records, and official meetings.", sourceIds: ["mibg", "bgdia"] },
+    { id: "high-hall-palace", name: "High Hall", type: "palace", district: "Upper City, Temples District", description: "Grand ducal palace and seat of Baldur's Gate's rulers.", sourceIds: ["mibg", "bgdia"] },
+    { id: "iron-throne", name: "Iron Throne Headquarters", type: "guildhall", district: "Lower City", factions: ["Iron Throne"], sourceIds: ["vgsc"] },
+    { id: "garynmor-stables", name: "Garynmor Stables and Menagerie", type: "stable", district: "Outer City", sourceIds: ["bgdia"] },
+    { id: "counting-house", name: "The Counting House", type: "bank", district: "Lower City", description: "Heavily secured financial institution and counting house serving the city's merchants.", sourceIds: ["bgdia", "mibg"] },
+    { id: "knowledge-hold", name: "Knowledge-Hold", type: "library", district: "Upper City", sourceIds: ["vgsc"] },
+    { id: "provoss-academy", name: "Provoss Academy", type: "school", district: "Upper City", sourceIds: ["bgdia"] },
+    { id: "verdashir-academy", name: "Verdashir Academy", type: "school", district: "Upper City", sourceIds: ["bgdia"] },
+    { id: "hissing-stones", name: "Hissing Stones", type: "bathhouse", district: "Lower City, Seatower", description: "Old and highly discreet Chessentan-style public bathhouse used as neutral meeting ground.", sourceIds: ["bgdia"] },
+    { id: "oasis", name: "Oasis Theater", type: "theater", district: "Upper City", sourceIds: ["bgdia"] },
+    { id: "watch-citadel-barracks", name: "Watch Citadel", type: "barracks", district: "Upper City", factions: ["Watch"], sourceIds: ["bgdia"] },
+    { id: "baldurs-gate-gate", name: "Baldur's Gate", type: "gatehouse", district: "Old Wall", description: "The namesake gate connecting the Upper and Lower City.", sourceIds: ["mibg"] },
+    { id: "basilisk-gate", name: "Basilisk Gate", type: "gatehouse", district: "Lower City", sourceIds: ["bgdia"] },
+    { id: "black-dragon-gate", name: "Black Dragon Gate", type: "gatehouse", district: "Upper City", sourceIds: ["bgdia"] },
+    { id: "sea-gate", name: "Sea Gate", type: "gatehouse", district: "Lower City", sourceIds: ["bgdia"] }
+  ]
+};
