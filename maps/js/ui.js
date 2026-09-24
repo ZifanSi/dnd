@@ -2,7 +2,7 @@
 // zoom / compass / 2D-3D buttons, and the loading bar. Pure DOM, no Three.js.
 import { TYPE_COLORS, TYPE_LABELS_ZH } from "./geo.js";
 
-export function createUI({ entries, viewer, onPick, onToggleImagery }) {
+export function createUI({ entries, viewer, onPick, onToggleImagery, onRouteFrom, onRouteTo, canRoute }) {
   const $ = id => document.getElementById(id);
 
   /* ---------- legend ---------- */
@@ -76,15 +76,20 @@ export function createUI({ entries, viewer, onPick, onToggleImagery }) {
 
   /* ---------- place card ---------- */
   const card = $("placeCard");
+  let cardEntry = null;
   function showPlace(entry) {
+    cardEntry = entry;
     $("placeName").textContent = entry.loc.name;
     $("placeType").textContent = TYPE_LABELS_ZH[entry.loc.type];
     $("placeType").style.color = TYPE_COLORS[entry.loc.type];
     $("placeCoords").textContent = `x ${entry.loc.x.toFixed(2)}%  ·  y ${entry.loc.y.toFixed(2)}%`;
+    $("placeActions").style.display = canRoute && canRoute(entry) ? "" : "none";
     card.classList.add("show");
   }
   function hidePlace() { card.classList.remove("show"); }
   $("placeClose").addEventListener("click", hidePlace);
+  $("placeFrom").addEventListener("click", () => { if (cardEntry) { onRouteFrom(cardEntry); hidePlace(); } });
+  $("placeTo").addEventListener("click", () => { if (cardEntry) { onRouteTo(cardEntry); hidePlace(); } });
 
   /* ---------- map controls ---------- */
   $("zoomInBtn").addEventListener("click", () => viewer.zoomBy(1 / 2));
@@ -119,5 +124,5 @@ export function createUI({ entries, viewer, onPick, onToggleImagery }) {
 
   $("countDisplay").textContent = entries.length;
 
-  return { showPlace, updateControls, setLoading };
+  return { showPlace, hidePlace, updateControls, setLoading };
 }

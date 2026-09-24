@@ -8,12 +8,20 @@
 export const WORLD_W = 10000;
 export const WORLD_H = WORLD_W * 6600 / 10200;
 
+/** Size of the source map image, whose pixel coordinates the road graph uses. */
+export const SOURCE_W = 10200, SOURCE_H = 6600;
+
 /** Convert a location's x/y percentages (0-100 of the source image) to world x/z. */
 export function toWorld(loc) {
   return {
     x: (loc.x / 100 - 0.5) * WORLD_W,
     z: (loc.y / 100 - 0.5) * WORLD_H
   };
+}
+
+/** Convert source-image pixel coordinates (as used by data/road-graph.js) to world x/z. */
+export function pxToWorld(px, py) {
+  return { x: (px / SOURCE_W - 0.5) * WORLD_W, z: (py / SOURCE_H - 0.5) * WORLD_H };
 }
 
 export const TYPE_COLORS = {

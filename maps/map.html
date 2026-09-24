@@ -112,6 +112,113 @@
   }
   #placeClose:hover { background: rgba(255,255,255,0.08); }
 
+  #placeActions { display: flex; gap: 6px; margin-top: 8px; }
+  #placeActions button, .actions button {
+    flex: 1; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 12px;
+    border: 1px solid var(--panel-border); background: rgba(255,255,255,0.06); color: var(--panel-fg);
+  }
+  #placeActions button:hover, .actions button:hover { background: rgba(255,255,255,0.14); }
+
+  /* ---------- directions ---------- */
+  #dirBtn {
+    width: 34px; height: 34px; border-radius: 7px; border: none; cursor: pointer; flex: none;
+    background: #1a73e8; color: #fff; display: grid; place-items: center;
+  }
+  #dirBtn:hover { background: #2b82f5; }
+  #directions {
+    top: 68px; left: 12px; width: 340px; max-width: calc(100vw - 24px);
+    max-height: calc(100vh - 90px); overflow-y: auto; padding: 10px 12px 12px;
+    display: none;
+  }
+  #directions.show { display: block; }
+  .dir-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .dir-title { font-weight: 700; color: var(--accent); font-size: 13px; }
+  #dirClose { border: none; background: transparent; color: var(--panel-fg-dim); cursor: pointer; font-size: 18px; width: 28px; height: 28px; border-radius: 6px; }
+  #dirClose:hover { background: rgba(255,255,255,0.08); }
+  .stops { position: relative; padding-right: 40px; display: flex; flex-direction: column; gap: 6px; }
+  .stop { display: flex; align-items: center; gap: 8px; }
+  .stop input {
+    flex: 1; min-width: 0; padding: 8px 10px; border-radius: 7px; font-size: 14px; outline: none;
+    border: 1px solid var(--panel-border); background: rgba(0,0,0,0.35); color: var(--panel-fg);
+  }
+  .stop input:focus { border-color: var(--accent); }
+  .stop input.invalid { border-color: #e6483c; }
+  .badge { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: 11px; font-weight: 800; color: #fff; flex: none; }
+  .badge.a { background: #1e9e4f; } .badge.b { background: #d93025; }
+  #dirSwap {
+    position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 32px; height: 32px;
+    border-radius: 50%; border: 1px solid var(--panel-border); background: rgba(255,255,255,0.06);
+    color: var(--panel-fg); cursor: pointer; font-size: 16px;
+  }
+  #dirSwap:hover { background: rgba(255,255,255,0.14); }
+  .modes { display: flex; margin-top: 10px; border: 1px solid var(--panel-border); border-radius: 8px; overflow: hidden; }
+  .modes button { flex: 1; padding: 7px 4px; border: none; background: transparent; color: var(--panel-fg-dim); cursor: pointer; font-size: 12px; }
+  .modes button.active { background: #1a73e8; color: #fff; font-weight: 700; }
+  #dirSuggest:not(:empty) {
+    position: absolute; left: 12px; right: 12px; z-index: 5; max-height: 280px; overflow-y: auto;
+    background: #221f1b; border: 1px solid var(--panel-border); border-radius: 8px; padding: 4px; box-shadow: var(--shadow);
+  }
+  #dirSuggest .item { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 6px; cursor: pointer; }
+  #dirSuggest .item.active, #dirSuggest .item:hover { background: rgba(255,255,255,0.10); }
+  #dirSuggest .n { flex: 1; }
+  #dirSuggest .t { font-size: 11px; color: var(--panel-fg-dim); }
+  #dirSuggest .empty { padding: 6px 8px; color: var(--panel-fg-dim); font-size: 12px; }
+  #dirResult .note { margin-top: 12px; color: var(--panel-fg-dim); font-size: 12px; }
+  .summary { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--panel-border); }
+  .summary .primary { font-size: 22px; font-weight: 800; color: #7fb3ff; }
+  .summary .secondary { color: var(--panel-fg); font-size: 13px; }
+  .summary .mix { margin-top: 6px; font-size: 11px; color: var(--panel-fg-dim); }
+  .summary .bar { display: flex; height: 6px; border-radius: 3px; overflow: hidden; background: #8a7a55; margin-bottom: 4px; }
+  .summary .bar i { display: block; height: 100%; }
+  .summary .bar .road { background: #e0584a; } .summary .bar .sea { background: #3d8fe0; }
+  .summary .algo { margin-top: 6px; font-size: 11px; color: #8f887b; }
+  .actions { display: flex; gap: 6px; margin-top: 10px; }
+  .actions .primary-btn { background: #1a73e8; border-color: #1a73e8; font-weight: 700; }
+  .actions .primary-btn:hover { background: #2b82f5; }
+  .actions .primary-btn.on { background: #b3261e; border-color: #b3261e; }
+  .legs { list-style: none; margin: 10px 0 0; padding: 0; counter-reset: leg; }
+  .legs li {
+    position: relative; padding: 7px 8px 7px 34px; border-radius: 7px; cursor: pointer; counter-increment: leg;
+  }
+  .legs li::before {
+    content: counter(leg); position: absolute; left: 8px; top: 9px; width: 18px; height: 18px; border-radius: 50%;
+    background: rgba(59,139,255,0.25); color: #9cc3ff; font-size: 11px; font-weight: 700; display: grid; place-items: center;
+  }
+  .legs li:hover { background: rgba(255,255,255,0.07); }
+  .legs li.current { background: rgba(59,139,255,0.18); }
+  .leg-title { font-size: 13px; font-weight: 600; }
+  .leg-meta { font-size: 11px; color: var(--panel-fg-dim); margin-top: 2px; }
+  .kind { display: inline-block; padding: 0 6px; border-radius: 4px; margin-left: 4px; font-size: 10px; line-height: 16px; }
+  .kind.road { background: rgba(224,88,74,0.25); color: #ff9f94; }
+  .kind.sea { background: rgba(61,143,224,0.25); color: #9cc8ff; }
+  .kind.land { background: rgba(160,140,90,0.25); color: #e0cf9c; }
+  body.directions-open #searchResults, body.directions-open #legend { display: none; }
+
+  /* route pins on the map */
+  .route-pin { position: absolute; width: 0; height: 0; pointer-events: none; }
+  .route-pin .pin-body {
+    position: absolute; left: -14px; top: -38px; width: 28px; height: 28px; border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg); border: 2px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    display: grid; place-items: center;
+  }
+  .route-pin .pin-body span { transform: rotate(45deg); color: #fff; font-weight: 800; font-size: 13px; }
+  .route-pin.start .pin-body { background: #1e9e4f; }
+  .route-pin.end .pin-body { background: #d93025; }
+  .route-stop {
+    position: absolute; width: 0; height: 0; pointer-events: none;
+  }
+  .route-stop::after {
+    content: ""; position: absolute; left: -6px; top: -6px; width: 8px; height: 8px; border-radius: 50%;
+    background: #fff; border: 2px solid #0b3d91;
+  }
+  .route-traveller { position: absolute; width: 0; height: 0; pointer-events: none; }
+  .route-traveller::before, .route-traveller::after {
+    content: ""; position: absolute; left: -8px; top: -8px; width: 16px; height: 16px; border-radius: 50%;
+  }
+  .route-traveller::after { background: #fff; border: 4px solid #1a73e8; box-sizing: border-box; }
+  .route-traveller::before { background: rgba(26,115,232,0.35); animation: pulse 1.4s ease-out infinite; }
+  @keyframes pulse { from { transform: scale(1); opacity: 1; } to { transform: scale(3.2); opacity: 0; } }
+
   #hud { top: 12px; right: 12px; padding: 8px 12px; font-size: 12px; color: var(--panel-fg-dim); text-align: right; }
   #hud b { color: var(--panel-fg); }
 
@@ -158,6 +265,7 @@
     #search { width: calc(100vw - 24px); }
     #hud { display: none; }
     #placeCard { top: 64px; }
+    #directions { top: 64px; width: calc(100vw - 24px); max-height: 55vh; }
     #legend .body { display: none; }
     #legend:not(.collapsed) .body { display: block; }
     #controls button { width: 36px; height: 36px; }
@@ -171,13 +279,38 @@
   <div class="box">
     <input id="searchInput" type="text" placeholder="搜索地名 / Search places" autocomplete="off">
     <button id="searchClear" title="清除">&times;</button>
+    <button id="dirBtn" title="路线规划 Directions">
+      <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M21.7 11.3l-9-9a1 1 0 0 0-1.4 0l-9 9a1 1 0 0 0 0 1.4l9 9a1 1 0 0 0 1.4 0l9-9a1 1 0 0 0 0-1.4zM14 14.5V12h-4v3H8v-4a1 1 0 0 1 1-1h5V7.5l3.5 3.5z"/></svg>
+    </button>
   </div>
   <div id="searchResults"></div>
+</div>
+
+<div id="directions" class="panel">
+  <div class="dir-head">
+    <span class="dir-title">路线规划 Directions</span>
+    <button id="dirClose" title="关闭">&times;</button>
+  </div>
+  <div class="stops">
+    <div class="stop"><span class="badge a">A</span><input id="dirFrom" type="text" placeholder="起点城镇（可点击地图上的城镇）" autocomplete="off"></div>
+    <div class="stop"><span class="badge b">B</span><input id="dirTo" type="text" placeholder="终点城镇" autocomplete="off"></div>
+    <button id="dirSwap" title="交换起点和终点">⇅</button>
+  </div>
+  <div class="modes">
+    <button data-mode="fastest" class="active">最快 · 沿道路</button>
+    <button data-mode="shortest">最短 · 里程最少</button>
+  </div>
+  <div id="dirSuggest"></div>
+  <div id="dirResult"></div>
 </div>
 
 <div id="placeCard" class="panel">
   <div id="placeName"></div>
   <div id="placeMeta"><span id="placeType"></span> · <span id="placeCoords"></span></div>
+  <div id="placeActions">
+    <button id="placeFrom">从这里出发</button>
+    <button id="placeTo">到这里去</button>
+  </div>
   <button id="placeClose" title="关闭">&times;</button>
 </div>
 
@@ -185,7 +318,8 @@
   地点 <b id="countDisplay">0</b><br>
   左键拖动 平移 · 滚轮 缩放<br>
   右键拖动 / Ctrl+拖动 旋转倾斜<br>
-  双击 放大 · 点击地名 飞过去
+  双击 放大 · 点击地名 飞过去<br>
+  蓝色按钮 路线规划（城镇间最短路径）
 </div>
 
 <div id="legend" class="panel">
