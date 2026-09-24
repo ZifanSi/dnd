@@ -1,13 +1,11 @@
-// City/town 3D scene generator — Three.js version.
+// City/town 3D building cluster generator.
 //
 // A per-location override can be registered via registerCityConfig(name, config);
 // buildCityGroup() looks the location's name up in that registry first and falls
 // back to the generic city/town template when nothing is registered.
 //
-// Buildings are plain THREE.BoxGeometry meshes with a flat MeshLambertMaterial —
-// light/shadow differentiation between faces comes from real scene lighting
-// (see city3d-viewer.js), not from hand-picked per-face colors, so there is no
-// hand-rolled 3D transform math left to get wrong.
+// All buildings of one city share a single InstancedMesh (one draw call per city).
+// Faces are shaded by the scene's real lights (see viewer.js), not by hand.
 import * as THREE from "three";
 
 /* ---------- deterministic per-location RNG (same city always looks the same) ---------- */
@@ -42,20 +40,15 @@ function resolveConfig(loc) {
   return { ...base, ...override, landmarks: (override && override.landmarks) || base.landmarks };
 }
 
-/** One building: a plain box mesh sitting on the ground (world y = 0), centered at (x, z). */
-function createBuildingMesh(x, z, w, d, h, hue, saturation, lightness) {
-  const geometry = new THREE.BoxGeometry(w, h, d);
-  const material = new THREE.MeshLambertMaterial({ color: new THREE.Color(`hsl(${hue}, ${saturation}%, ${lightness}%)`) });
-  const mesh = new THREE.Mesh(geometry, material);
-  mesh.position.set(x, h / 2, z);
-  return mesh;
-}
+// unit cube with its base on y=0, so instance scale (w, h, d) gives a box standing on the ground
+const UNIT_BOX = new THREE.BoxGeometry(1, 1, 1).translate(0, 0.5, 0);
+const BUILDING_MATERIAL = new THREE.MeshLambertMaterial({ color: 0xffffff });
 
 /**
- * Build a THREE.Group containing the ground plane + every building for one
- * city/town location, using its registered config (or the generic template).
- * The group is centered on its own local origin (0,0,0) — city3d-viewer.js
- * positions the *camera* around it rather than placing the group in world space.
+ * Build a THREE.Group containing a ground footprint + every building for one
+ * city/town, in the generator's own units (buildings ~20-34 wide, 20-175 tall),
+ * centered on the group's local origin. The caller positions/scales the group.
+ * group.userData = { maxHeight, radius } in those same local units.
  */
 export function buildCityGroup(loc) {
   const config = resolveConfig(loc);
@@ -69,12 +62,19 @@ export function buildCityGroup(loc) {
   const spacing = 46;
   const groundSize = (cols + 2) * spacing;
 
-  const ground = new THREE.Mesh(
-    new THREE.PlaneGeometry(groundSize, groundSize),
-    new THREE.MeshLambertMaterial({ color: new THREE.Color(`hsl(${config.hue}, ${config.saturation}%, 22%)`) })
+  // soft round "town square" under the buildings
+  const footprint = new THREE.Mesh(
+    new THREE.CircleGeometry(groundSize * 0.58, 48),
+    new THREE.MeshLambertMaterial({
+      color: new THREE.Color().setStyle(`hsl(${config.hue}, ${config.saturation + 8}%, 45%)`),
+      transparent: true,
+      opacity: 0.22,
+      depthWrite: false
+    })
   );
-  ground.rotation.x = -Math.PI / 2; // lay flat on the XZ plane
-  group.add(ground);
+  footprint.rotation.x = -Math.PI / 2;
+  footprint.position.y = 1;
+  group.add(footprint);
 
   const buildings = [];
   for (let i = 0; i < count; i++) {
@@ -82,25 +82,47 @@ export function buildCityGroup(loc) {
     const row = Math.floor(i / cols);
     const jitterX = (rand() - 0.5) * 16;
     const jitterZ = (rand() - 0.5) * 16;
-    const x = (col - (cols - 1) / 2) * spacing + jitterX;
-    const z = (row - (cols - 1) / 2) * spacing + jitterZ;
-    const w = 20 + rand() * 14;
-    const d = 20 + rand() * 14;
-    const h = hMin + rand() * (hMax - hMin);
-    buildings.push({ x, z, w, d, h, lightness: 42 + rand() * 14 });
+    buildings.push({
+      x: (col - (cols - 1) / 2) * spacing + jitterX,
+      z: (row - (cols - 1) / 2) * spacing + jitterZ,
+      w: 20 + rand() * 14,
+      d: 20 + rand() * 14,
+      h: hMin + rand() * (hMax - hMin),
+      hue: config.hue,
+      sat: config.saturation,
+      light: 50 + rand() * 16
+    });
   }
   // fixed, hand-placed landmark buildings from a per-city config (optional)
   config.landmarks.forEach(lm => {
-    buildings.push({ x: lm.x, z: lm.z, w: lm.w, d: lm.d, h: lm.h, isLandmark: true, lightness: 48 });
+    buildings.push({
+      ...lm,
+      hue: config.landmarkHue ?? config.hue,
+      sat: config.landmarkSaturation ?? config.saturation,
+      light: 58
+    });
   });
 
-  // no manual draw-order sorting needed — the WebGL depth buffer in city3d-viewer.js
-  // handles correct occlusion regardless of insertion order.
-  buildings.forEach(b => {
-    const hue = b.isLandmark ? (config.landmarkHue ?? config.hue) : config.hue;
-    const sat = b.isLandmark ? (config.landmarkSaturation ?? config.saturation) : config.saturation;
-    group.add(createBuildingMesh(b.x, b.z, b.w, b.d, b.h, hue, sat, b.lightness));
+  const mesh = new THREE.InstancedMesh(UNIT_BOX, BUILDING_MATERIAL, buildings.length);
+  const matrix = new THREE.Matrix4();
+  const rotation = new THREE.Quaternion();
+  const position = new THREE.Vector3();
+  const size = new THREE.Vector3();
+  const color = new THREE.Color();
+  let maxHeight = 0;
+  buildings.forEach((b, i) => {
+    matrix.compose(position.set(b.x, 0, b.z), rotation, size.set(b.w, b.h, b.d));
+    mesh.setMatrixAt(i, matrix);
+    mesh.setColorAt(i, color.setStyle(`hsl(${b.hue}, ${b.sat}%, ${b.light}%)`));
+    maxHeight = Math.max(maxHeight, b.h);
   });
+  mesh.instanceMatrix.needsUpdate = true;
+  mesh.instanceColor.needsUpdate = true;
+  // the shared unit-box bounds don't describe the spread-out instances; only nearby
+  // cities are ever visible anyway, so skip per-city frustum culling
+  mesh.frustumCulled = false;
+  group.add(mesh);
 
+  group.userData = { maxHeight, radius: groundSize / 2 };
   return group;
 }

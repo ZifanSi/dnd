@@ -1,72 +1,72 @@
 name,x_percent,y_percent,type
 Tuern,10.33,7.77,island
 Uttersea,11.00,6.91,town
-Ruins of Ascarl,14.59,17.27,town
+Ruins of Ascarl,14.56,16.89,town
 Trisk,14.15,18.14,town
-Ulf of Thuger,13.92,19.00,town
+Ulf of Thuger,14.34,18.35,town
 The Purple Rocks,16.84,17.85,island
 Utherall,15.04,19.86,town
-Vilkstead,16.39,19.58,town
+Vilkstead,16.42,19.58,town
 Sea of Moving Ice,31.87,5.59,region
 Icewind Dale,35.35,4.61,region
 Reghed Glacier,40.09,4.15,region
 Kelvin's Cairn,37.03,5.59,mountain
-Ironmaster,34.79,7.60,town
+Ironmaster,34.74,7.90,town
 Ten-Towns,35.86,7.51,region
-Raven Rock,40.33,8.75,town
-Fireshear,34.79,11.63,town
-Luskan,38.22,13.56,city
+Raven Rock,40.36,8.80,town
+Fireshear,34.89,11.63,town
+Luskan,38.67,13.56,city
 Blackford Crossing,39.28,13.47,town
-Gauntlgrym,41.02,16.35,city
+Gauntlgrym,41.02,16.99,city
 Mount Hotenow,39.90,17.42,mountain
-Gundbarg,27.07,19.52,town
+Gundbarg,27.07,20.13,town
 Gundarlun,26.30,21.86,island
-Neverwinter,39.84,20.21,city
-Helm's Hold,39.50,21.35,town
+Neverwinter,39.84,20.56,city
+Helm's Hold,40.91,21.46,town
 Mere of Dead Men,39.84,28.08,region
 The Endless Ice Sea,51.00,3.74,region
 The Spine of the World,44.89,6.16,mountain
 Kingdom of Many Arrows,53.11,5.96,region
 Cold Wood,59.96,6.25,forest
 River Surbrin,55.79,7.40,river
-Beorunna's Well,58.59,7.80,town
-Mirabar,43.50,10.16,city
+Beorunna's Well,58.20,7.98,town
+Mirabar,43.45,10.19,city
 Great Worm Cavern,48.01,8.47,region
 The Lurkwood,49.44,10.39,forest
 Mithral Hall,53.24,12.03,city
-One Stone,55.95,11.34,town
-Citadel Felbarr,58.59,11.75,city
-Settlestone,51.87,12.70,town
-Menzoberranzan,53.11,12.49,city
+One Stone,55.77,11.60,town
+Citadel Felbarr,58.64,11.67,city
+Settlestone,53.05,12.44,town
+Menzoberranzan,53.85,11.99,city
 River Mirar,42.53,11.75,river
-Morgur's Mound,42.53,15.20,town
-Silverymoon,55.60,15.40,city
-Sundabar,59.40,15.29,city
+Morgur's Mound,42.42,14.90,town
+Silverymoon,55.53,15.49,city
+Sundabar,59.61,14.88,city
 River Rauvin,58.16,16.84,river
 The Evermoors,52.43,17.42,region
-Stone Stand,59.03,18.66,town
-Longsaddle,45.27,19.32,town
+Stone Stand,58.89,17.93,town
+Longsaddle,45.27,17.53,town
 Neverwinter Wood,42.15,19.81,forest
 The Laughingflow,50.94,18.66,river
-Flint Rock,49.38,19.52,town
+Flint Rock,49.16,19.55,town
 Grandfather Tree,56.10,21.24,region
 The High Forest,59.65,22.11,forest
-Triboar,46.70,21.72,town
-Yartar,48.67,22.15,town
+Triboar,46.60,22.16,town
+Yartar,48.65,22.47,town
 Dessarin River,50.53,22.29,river
 Sword Mountains,44.77,24.80,mountain
 Sword Mountains,44.58,32.37,mountain
 Star Mounts,56.04,24.99,mountain
-Karse,59.46,24.94,town
-Castle Hartwick,64.90,6.82,town
+Karse,57.51,24.77,town
+Castle Hartwick,65.02,6.90,town
 Hartsvale,67.51,6.45,region
 Ice Spires,63.09,8.38,mountain
-Citadel Adbar,64.15,10.02,city
+Citadel Adbar,64.15,10.05,city
 The High Ice,76.97,12.21,region
-Ascore,66.39,13.76,town
+Ascore,66.36,13.31,town
 Arn Forest,65.77,14.74,forest
 Nether Mountains,64.46,15.98,mountain
-Hellgate Dell,62.53,20.30,town
+Hellgate Dell,62.50,19.30,town
 Delimbiyr River,62.28,21.56,river
 Delimbiyr River,50.99,38.15,river
 The Far Forest,65.02,21.28,forest
@@ -74,9 +74,9 @@ The Frozen Sea,69.56,22.49,region
 The Frozen Forest,90.96,17.96,forest
 Turnback Mountains,87.18,23.97,mountain
 Trackless Sea,18.97,29.19,region
-Thornhold,40.33,31.54,town
+Thornhold,42.16,31.56,town
 Ruathym,26.45,36.78,island
-Ruathym,25.70,37.47,town
+Ruathym,25.52,37.30,town
 The Whale Bones,34.42,36.23,island
 Finback,33.05,38.15,island
 Northlander Isles,31.62,40.66,region
@@ -85,27 +85,27 @@ Skadaurak,39.49,46.71,island
 Mintarn,41.55,51.84,island
 Moonshae Isles,30.50,52.87,region
 Unicorn Run,56.10,29.87,river
-Amphail,45.77,33.63,town
+Amphail,45.35,33.58,town
 Southwood,60.33,36.60,forest
-Waterdeep,44.21,37.18,city
-Secomber,51.99,37.47,town
-Daggerford,47.51,41.03,town
+Waterdeep,45.17,37.15,city
+Secomber,52.48,37.95,town
+Daggerford,48.39,40.48,town
 Misty Forest,51.06,43.34,forest
-Orogoth,56.16,43.53,town
+Orogoth,58.31,43.33,town
 The High Moor,56.91,44.98,region
 Serpent Hills,61.40,46.42,region
 Trollbark Forest,49.78,48.44,forest
 Orlumbor,47.17,48.63,island
 Dragonspear Castle,53.92,48.92,town
-Warlock's Crypt,48.60,50.98,town
+Warlock's Crypt,49.78,51.24,town
 The Plain of Standing Stones,77.35,32.08,region
 Greypeak Mountains,63.03,33.63,mountain
 Anauroch,78.35,42.19,region
 Marsh of Chelimber,64.52,44.21,region
 Greycloak Hills,68.07,43.73,region
-Evereska,69.66,46.27,city
+Evereska,68.94,46.27,city
 Najara,61.51,50.07,region
-Ss'thar'tiss'ssun,63.18,49.25,city
+Ss'thar'tiss'ssun,63.23,49.40,city
 Desertsmouth Mountains,81.21,52.37,mountain
 The Tortured Land,90.57,29.71,region
 White Peaks,88.27,33.61,mountain
@@ -115,52 +115,52 @@ Thar,98.09,41.16,region
 Border Forest,86.42,42.03,forest
 Zhentil Keep,91.30,43.33,city
 Hillsfar,93.01,47.29,city
-Myth Drannor,90.46,50.28,city
+Myth Drannor,91.67,50.48,city
 Cormanthor,94.00,52.54,forest
 Spiderhaunt Woods,83.70,50.46,forest
 Sea of Moonshae,30.93,55.35,river
 Norland,27.32,57.57,island
 Rogarsheim,28.63,56.24,town
-Iron Keep,30.93,58.82,town
+Iron Keep,30.73,59.59,town
 Omans Isle,30.00,60.55,island
 Alaron,35.48,60.55,island
 Fairheight Range,35.48,55.07,mountain
 Dernal Forest,34.11,57.57,forest
-Caer Moray,27.39,62.47,town
+Caer Moray,27.84,62.53,town
 Trollclaw Range,25.64,62.76,mountain
-Dynnegall,28.51,63.35,town
-Farview,26.95,64.49,town
+Dynnegall,28.04,63.32,town
+Farview,27.23,64.37,town
 Moray,27.39,65.66,island
 Gwynneth,31.99,63.54,island
 Myrloch Vale,31.81,65.66,region
-Caer Corwell,31.37,68.33,town
+Caer Corwell,32.05,68.60,town
 Snowdown,36.97,67.19,island
-Caer Westphal,37.35,68.14,town
+Caer Westphal,36.01,69.03,town
 Winding Water,50.06,54.26,river
 The Trollclaws,54.98,53.91,mountain
-Trollclaw Ford,54.30,55.35,town
-Boareskyr Bridge,58.59,54.49,town
+Trollclaw Ford,54.25,55.12,town
+Boareskyr Bridge,57.95,54.26,town
 Forest of Wyrms,61.58,52.95,forest
 The Fields of the Dead,57.34,59.20,region
 River Chionthar,55.54,61.80,river
 River Chionthar,66.10,71.80,river
-Elturel,59.83,62.09,town
-Fort Morninglord,59.21,63.35,town
+Elturel,59.50,62.33,town
+Fort Morninglord,58.41,63.12,town
 Elturgard,60.96,64.49,region
 Sword Coast,46.02,54.49,region
 Sea of Swords,44.52,61.41,river
-Baldur's Gate,52.43,63.63,city
+Baldur's Gate,52.45,64.68,city
 The Cloakwood,51.31,66.51,forest
-Candlekeep,52.06,70.50,city
+Candlekeep,50.88,72.17,city
 Wood of Sharp Teeth,58.35,67.76,forest
 Northdark Wood,65.08,56.21,forest
-Hardbuckler,64.46,56.89,town
+Hardbuckler,64.18,57.92,town
 Trielta Hills,62.40,57.57,mountain
 The Reaching Woods,65.14,61.60,forest
-Triel,61.97,61.41,town
-Scornubel,62.90,63.44,town
+Triel,61.88,61.49,town
+Scornubel,63.59,63.39,town
 Sunset Mountains,70.25,59.39,mountain
-Darkhold,69.13,61.32,town
+Darkhold,68.47,61.35,town
 The Far Hills,68.19,62.66,mountain
 The Storm Horns,75.23,61.22,mountain
 The High Moors,78.16,57.66,region
@@ -169,7 +169,7 @@ Cormyr,81.21,65.07,region
 Marsember,78.59,68.34,city
 Lake of Dragons,77.22,67.09,river
 Proskur,73.61,69.59,town
-Berdusk,63.77,69.21,town
+Berdusk,63.88,68.91,town
 Iriaebor,67.51,70.19,town
 Easting,69.31,72.25,town
 Elversult,75.97,73.18,town
