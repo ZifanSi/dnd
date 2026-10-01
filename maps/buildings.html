@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building Models</title>
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #14120f;
+    font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif; }
+  #stage { position: fixed; inset: 0; }
+  #stage canvas { display: block; }
+  .labels { position: absolute; inset: 0; pointer-events: none; }
+  .tag {
+    pointer-events: auto; cursor: pointer; text-align: center; white-space: nowrap;
+    background: rgba(22,20,18,0.85); color: #f1ead9; border-radius: 8px; padding: 4px 9px;
+    border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+  }
+  .tag b { font-size: 14px; margin-right: 5px; }
+  .tag span { font-size: 12px; color: #e8b84b; }
+  .tag small { display: block; font-size: 10px; color: #b9b0a0; }
+  .tag.active { border-color: #e8b84b; }
+  #bar {
+    position: fixed; top: 12px; left: 12px; z-index: 5; display: flex; gap: 10px; align-items: center;
+    background: rgba(22,20,18,0.9); color: #f1ead9; padding: 8px 12px; border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1); font-size: 13px;
+  }
+  #bar a, #bar button {
+    color: #f1ead9; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 6px; padding: 4px 10px; cursor: pointer; text-decoration: none; font-size: 12px;
+  }
+  #current { color: #e8b84b; font-weight: 700; }
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<div id="bar">
+  <span id="current">全部建筑</span>
+  <button id="overviewBtn">全览</button>
+  <label><input type="checkbox" id="ruinedToggle"> 废墟样式</label>
+  <a href="map.html">返回地图</a>
+</div>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module" src="js/building-gallery.js"></script>
+</body>
+</html>
