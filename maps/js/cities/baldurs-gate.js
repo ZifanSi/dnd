@@ -1,14 +1,7 @@
-// Custom 3D-scene tuning for Baldur's Gate — a walled city split by the Chionthar,
-// so it gets more buildings than the generic city template plus a tall landmark
-// tower standing in for the Wide/High House of Wonder skyline silhouette.
+// 3D-town tuning for Baldur's Gate. Its named establishments come from
+// data/cities/baldurs-gate.js; this only adds more ordinary houses for a busy port city.
+// Options: houses (filler dwellings), walls (true/false), ground (vertex colour).
 export default {
-  buildingCount: 42,
-  heightRange: [35, 100],
-  hue: 22,
-  saturation: 13,
-  landmarks: [
-    { x: 0, z: 0, w: 30, d: 30, h: 150 }
-  ],
-  landmarkHue: 18,
-  landmarkSaturation: 16
+  houses: 26,
+  walls: true
 };

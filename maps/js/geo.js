@@ -46,8 +46,8 @@ export const TYPE_LABELS_ZH = {
 
 /** How close the camera parks when you fly to a place of this type. */
 export const FLY_DISTANCE = {
-  city: 230,
-  town: 160,
+  city: 165,
+  town: 105,
   forest: 900,
   mountain: 900,
   river: 900,
