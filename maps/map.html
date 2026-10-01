@@ -112,6 +112,29 @@
   }
   #placeClose:hover { background: rgba(255,255,255,0.08); }
 
+  #placeCard { max-width: min(420px, calc(100vw - 24px)); }
+  #placeDetail:not(:empty) { margin-top: 6px; font-size: 12px; line-height: 1.5; max-height: 40vh; overflow-y: auto; }
+  #placeDetail .row b { color: var(--panel-fg-dim); font-weight: 600; }
+  #placeDetail .desc { color: var(--panel-fg); margin: 3px 0; }
+  #placeDetail .warn { color: #ff9f94; }
+  #placeDetail .src { color: #8f887b; font-size: 11px; }
+
+  /* named establishments on the 3D towns */
+  .poi { position: absolute; width: 0; height: 0; transition: opacity 0.25s; }
+  .poi.off { opacity: 0; }
+  .poi.off * { pointer-events: none !important; }
+  .poi-dot {
+    position: absolute; left: -4px; top: -4px; width: 8px; height: 8px; border-radius: 50%;
+    border: 1.5px solid #fff; box-shadow: 0 1px 2px rgba(0,0,0,0.5); pointer-events: auto; cursor: pointer;
+  }
+  .poi-name {
+    position: absolute; left: 7px; top: -8px; white-space: nowrap; font-size: 11px; font-weight: 600;
+    color: #2b2419; text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 2px #fff;
+    pointer-events: auto; cursor: pointer; user-select: none;
+  }
+  .poi-name:hover { text-decoration: underline; }
+  .poi.ruined .poi-name { color: #6b5f52; font-style: italic; }
+
   #placeActions { display: flex; gap: 6px; margin-top: 8px; }
   #placeActions button, .actions button {
     flex: 1; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 12px;
@@ -307,6 +330,7 @@
 <div id="placeCard" class="panel">
   <div id="placeName"></div>
   <div id="placeMeta"><span id="placeType"></span> · <span id="placeCoords"></span></div>
+  <div id="placeDetail"></div>
   <div id="placeActions">
     <button id="placeFrom">从这里出发</button>
     <button id="placeTo">到这里去</button>
@@ -319,7 +343,8 @@
   左键拖动 平移 · 滚轮 缩放<br>
   右键拖动 / Ctrl+拖动 旋转倾斜<br>
   双击 放大 · 点击地名 飞过去<br>
-  蓝色按钮 路线规划（城镇间最短路径）
+  蓝色按钮 路线规划（城镇间最短路径）<br>
+  <a href="buildings.html" style="color: var(--accent);">建筑模型库 Building models →</a>
 </div>
 
 <div id="legend" class="panel">

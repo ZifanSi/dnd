@@ -11,6 +11,7 @@ import { createMarkers } from "./markers.js";
 import { createRouteLayer } from "./route-layer.js";
 import { createDirections } from "./directions.js";
 import { createUI } from "./ui.js";
+import { getModel } from "./buildings/index.js";
 
 // Locations without a registered config fall back to the generic city/town
 // template inside city-scene.js. Add more cities/*.js files and register them
@@ -27,7 +28,9 @@ const viewer = createViewer(container);
 const basemap = createBasemap(viewer.renderer, { onProgress: (d, t) => ui.setLoading(d, t) });
 viewer.scene.add(basemap.group);
 
-const cities = createCitiesLayer(viewer.scene, entries);
+const cities = createCitiesLayer(viewer.scene, entries, {
+  onPoiClick: (poi, city) => ui.showEstablishment(poi, city, type => getModel(type).zh)
+});
 const markers = createMarkers(viewer.scene, container, entries, { onClick: onPlaceClicked });
 const routeLayer = createRouteLayer(viewer.scene, viewer);
 
@@ -61,9 +64,10 @@ function onPlaceClicked(entry) {
   flyToEntry(entry);
 }
 
-viewer.onResize((w, h) => { markers.resize(w, h); routeLayer.resize(w, h); });
+let viewW = 0, viewH = 0;
+viewer.onResize((w, h) => { viewW = w; viewH = h; markers.resize(w, h); routeLayer.resize(w, h); });
 viewer.onFrame((camera, view, dt) => {
-  cities.update(camera, dt);
+  cities.update(camera, dt, viewW, viewH);
   routeLayer.update(dt);
   markers.update(camera, view.distance, cities.liftFor);
   markers.render(camera);

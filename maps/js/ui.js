@@ -83,7 +83,41 @@ export function createUI({ entries, viewer, onPick, onToggleImagery, onRouteFrom
     $("placeType").textContent = TYPE_LABELS_ZH[entry.loc.type];
     $("placeType").style.color = TYPE_COLORS[entry.loc.type];
     $("placeCoords").textContent = `x ${entry.loc.x.toFixed(2)}%  ·  y ${entry.loc.y.toFixed(2)}%`;
+    $("placeDetail").innerHTML = "";
     $("placeActions").style.display = canRoute && canRoute(entry) ? "" : "none";
+    card.classList.add("show");
+  }
+
+  /** Card for a named establishment from the city data (clicked on the 3D town). */
+  function showEstablishment(poi, city, typeName) {
+    cardEntry = null;
+    $("placeName").textContent = poi.name;
+    $("placeType").textContent = poi.types.map(typeName).join(" / ");
+    $("placeType").style.color = "#e8b84b";
+    $("placeCoords").textContent = city.name;
+    $("placeActions").style.display = "none";
+
+    const detail = $("placeDetail");
+    detail.innerHTML = "";
+    const line = (label, text, cls = "") => {
+      if (!text) return;
+      const row = document.createElement("div");
+      row.className = `row ${cls}`;
+      if (label) { const b = document.createElement("b"); b.textContent = label; row.appendChild(b); }
+      row.appendChild(document.createTextNode(text));
+      detail.appendChild(row);
+    };
+    const recs = poi.records;
+    const first = key => recs.map(r => r[key]).find(Boolean);
+    const all = key => [...new Set(recs.flatMap(r => (Array.isArray(r[key]) ? r[key] : r[key] ? [r[key]] : [])))];
+    line("城区 ", first("district"));
+    line("神祇 ", [...all("deity"), ...all("deities")].join("、"));
+    line("势力 ", all("factions").join("、"));
+    line("", [...new Set(recs.map(r => r.description).filter(Boolean))].join(" "), "desc");
+    line("状态 ", first("status") || (poi.ruined ? city.status : ""), poi.ruined ? "warn" : "");
+    line("别名 ", all("aliases").join("、"));
+    const sources = all("sourceIds").map(id => city.sources.find(s => s.id === id)).filter(Boolean);
+    line("出处 ", sources.map(s => s.title + (s.pages ? ` (p. ${s.pages})` : "")).join("；"), "src");
     card.classList.add("show");
   }
   function hidePlace() { card.classList.remove("show"); }
@@ -124,5 +158,5 @@ export function createUI({ entries, viewer, onPick, onToggleImagery, onRouteFrom
 
   $("countDisplay").textContent = entries.length;
 
-  return { showPlace, hidePlace, updateControls, setLoading };
+  return { showPlace, showEstablishment, hidePlace, updateControls, setLoading };
 }
